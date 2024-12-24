@@ -7,7 +7,7 @@ const anketaForm = document.getElementById('anketa-form');
 let users = [];
 
 // Загрузка users.json из GitHub API
-fetch('https://api.github.com/repos/<ваш_логин_гитхаба>/<ваш_репозиторий>/contents/data/users.json')
+fetch('https://api.github.com/repos/CaptainAirbuz/province/contents/data/users.json')
     .then(response => response.json())
     .then(data => {
        const content = atob(data.content);
@@ -36,7 +36,7 @@ anketaForm.addEventListener('submit', (event) => {
 
     const csvRow = `"${name}","${age}","${question1}"\n`;
 
-    fetch('https://api.github.com/repos/<ваш_логин_гитхаба>/<ваш_репозиторий>/contents/data/answers.csv', {
+    fetch('https://api.github.com/repos/CaptainAirbuz/province/contents/data/answers.csv', {
         method: 'GET',
         headers: {
             'Accept': 'application/vnd.github.v3.raw'
@@ -51,7 +51,7 @@ anketaForm.addEventListener('submit', (event) => {
     })
     .then(data => {
          const existingContent = data;
-        fetch('https://api.github.com/repos/<ваш_логин_гитхаба>/<ваш_репозиторий>/contents/data/answers.csv',{
+        fetch('https://api.github.com/repos/CaptainAirbuz/province/contents/data/answers.csv',{
             method: 'PUT',
             headers: {
                'Authorization': 'Bearer <ваш_токен_гитхаба>',
